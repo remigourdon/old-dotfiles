@@ -1,0 +1,69 @@
+# Source bashrc
+alias sbrc='source ~/.bashrc'
+
+# sudo (this tick allows to run sudo command with user's PATH and bashrc)
+alias sudo='sudo '
+
+# Run sudo with user PATH
+alias sudoe='sudo env PATH=$PATH'
+
+# Editor
+alias e='$EDITOR'
+
+# rm
+alias rm='rm -i'
+
+# ls
+alias ls='ls --color=auto --group-directories-first'
+alias l='ls'
+alias ll='ls -lh'
+alias la='ls -lah'
+
+# dd
+alias dd='dd status=progress'
+
+# lsblk
+alias lk='lsblk'
+
+# grep
+alias grep='grep --color=auto'
+
+# diff
+alias diff='diff --color=auto'
+
+# mkdir
+alias mkdir='mkdir -pv'
+
+# Protection against overwriting
+alias cp='cp -i'
+alias mv='mv -i'
+
+# cat
+alias c='cat'
+
+# Use highlight for colored cat
+alias cc='highlight --out-format=ansi'
+
+# Git
+alias g='git'
+alias gst='git status'
+alias gl='git log'
+alias gd='git diff'
+alias ga='git add'
+alias gaa='git add .'
+alias gcmsg='git commit -m'
+alias gf='git fetch'
+alias gm='git merge'
+alias gp='git push'
+
+# Remove host from SSH keygen know hosts
+alias sshr='ssh-keygen -f $HOME/.ssh/known_hosts -R'
+
+# BladeRF
+alias brf='bladeRF-cli'
+alias brfv='bladeRF-cli -e version'
+alias brfi='bladeRF-cli -e info'
+alias brfp='bladeRF-cli -e print'
+
+# Unmount all partitions of a device
+ud() { ls ${1}?* | xargs -n1 umount -l ;}

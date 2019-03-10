@@ -1,0 +1,4 @@
+- link:
+    ~/.profile: misc/profile/profile
+    ~/.xprofile: misc/profile/profile
+    ~/.bash_profile: misc/profile/profile
