@@ -38,5 +38,5 @@
 *color15:               #fdf6e3
 
 
-*.font: Inconsolata for Powerline:pixelsize=16:antialias=true:autohint=true;
+*.font: Source Code Pro for Powerline:pixelsize=16:antialias=true:autohint=true;
 *.alpha: 250
