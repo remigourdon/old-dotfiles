@@ -61,6 +61,9 @@ alias ggconf='git config -l --global | grep "user.*"'
 # Remove host from SSH keygen know hosts
 alias sshr='ssh-keygen -f $HOME/.ssh/known_hosts -R'
 
+# Neovim
+alias vim='nvim'
+
 # BladeRF
 alias brf='bladeRF-cli'
 alias brfv='bladeRF-cli -e version'
