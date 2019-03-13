@@ -3,5 +3,5 @@
 # Load Xresources
 [ -e ~/.Xresources ] && xrdb ~/.Xresources
 
-# Start i3
-exec i3
+# Start i3 if present
+[ -e /usr/bin/i3 ] && exec i3
