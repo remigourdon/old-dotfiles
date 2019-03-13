@@ -55,6 +55,8 @@ alias gcmsg='git commit -m'
 alias gf='git fetch'
 alias gm='git merge'
 alias gp='git push'
+alias glconf='git config -l --local | grep "user.*"'
+alias ggconf='git config -l --global | grep "user.*"'
 
 # Remove host from SSH keygen know hosts
 alias sshr='ssh-keygen -f $HOME/.ssh/known_hosts -R'
