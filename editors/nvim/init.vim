@@ -7,6 +7,7 @@ Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 """""""""""
@@ -51,6 +52,9 @@ set autoindent
 """""""""""
 " AIRLINE "
 """""""""""
+
+" Configuration
+let g:airline#extensions#tabline#enabled = 1
 
 " Airline theme
 let g:airline_theme='solarized'
