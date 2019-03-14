@@ -19,6 +19,12 @@ alias l='ls'
 alias ll='ls -lh'
 alias la='ls -lah'
 
+# cd
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
 # dd
 alias dd='dd status=progress'
 
@@ -44,27 +50,34 @@ alias c='cat'
 # Use highlight for colored cat
 alias cc='highlight --out-format=ansi'
 
-# Git
+# git
 alias g='git'
-alias gst='git status'
+alias gs='git status'
 alias gl='git log'
 alias gd='git diff'
+alias gg='git grep'
 alias ga='git add'
+alias gco='git checkout'
 alias gaa='git add .'
-alias gcmsg='git commit -m'
+alias gcm='git commit -m'
 alias gf='git fetch'
 alias gm='git merge'
 alias gp='git push'
+alias gr='git rebase'
+alias gri='git rebase --interactive'
 alias glconf='git config -l --local | grep "user.*"'
 alias ggconf='git config -l --global | grep "user.*"'
 
 # Remove host from SSH keygen know hosts
 alias sshr='ssh-keygen -f $HOME/.ssh/known_hosts -R'
 
-# Neovim
+# neovim
 alias vim='nvim'
 
-# BladeRF
+# netstat
+alias ports='netstat -tulanp'
+
+# bladeRF
 alias brf='bladeRF-cli'
 alias brfv='bladeRF-cli -e version'
 alias brfi='bladeRF-cli -e info'
@@ -72,3 +85,6 @@ alias brfp='bladeRF-cli -e print'
 
 # Unmount all partitions of a device
 ud() { ls ${1}?* | xargs -n1 umount -l ;}
+
+# Move up N directories
+up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
