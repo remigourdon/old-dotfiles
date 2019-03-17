@@ -2,7 +2,7 @@
 
 # Add .scripts and all subdirectories to $PATH
 if [ -d $HOME/.dotfiles/scripts/ ] ; then
-    export PATH="$PATH:$(du "$HOME/.scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+    export PATH="$PATH:$(du "$HOME/.dotfiles/scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 fi
 
 # Add Projects/scripts and all subdirectories to $PATH
