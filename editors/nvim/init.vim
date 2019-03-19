@@ -34,6 +34,9 @@ set mouse=a
 " Disable swap files
 set noswapfile
 
+" Allow hiding buffers
+set hid
+
 """"""""""
 " DISLAY "
 """"""""""
