@@ -100,6 +100,18 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 
+"""""""
+" FZF "
+"""""""
+
+nnoremap <c-space> :FZF<cr>
+
+" Split key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
 """""""""""""""""
 " FINDING FILES "
 """""""""""""""""
