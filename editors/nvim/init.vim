@@ -9,6 +9,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 """""""""""
@@ -104,7 +105,8 @@ let g:airline_symbols.maxlinenr = ''
 " FZF "
 """""""
 
-nnoremap <c-space> :FZF<cr>
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>f :Files<cr>
 
 " Split key bindings
 let g:fzf_action = {
