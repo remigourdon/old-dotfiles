@@ -56,3 +56,9 @@ Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.dpi: 96
+
+!!!!!!!!
+! ROFI !
+!!!!!!!!
+
+rofi.font: Source Code Pro for Powerline 11

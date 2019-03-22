@@ -36,7 +36,7 @@ exec --no-startup-id xcompmgr
 ##################
 
 # Basic applications
-bindsym $mod+d 		exec dmenu_run
+bindsym $mod+d 		    exec "rofi -show drun"
 bindsym $mod+Return 	exec $term
 
 # Exit i3 and log out of X session
