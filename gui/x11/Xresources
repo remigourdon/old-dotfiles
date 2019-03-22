@@ -1,3 +1,7 @@
+!!!!!!!!!!!!!!!
+! COLORSCHEME !
+!!!!!!!!!!!!!!!
+
 *background:            #002b36
 *foreground:            #839496
 *fadeColor:             #002b36
@@ -38,5 +42,17 @@
 *color15:               #fdf6e3
 
 
+!!!!!!!!!
+! FONTS !
+!!!!!!!!!
+
 *.font: Source Code Pro for Powerline:pixelsize=16:antialias=true:autohint=true;
 *.alpha: 250
+
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: 0
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.dpi: 96
