@@ -15,7 +15,3 @@ source ~/.aliases
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# z.lua
-export _ZL_ECHO=1
-eval "$(lua ${HOME}/Sources/z.lua/z.lua --init bash enhanced once fzf)"
