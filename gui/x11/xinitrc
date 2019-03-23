@@ -5,3 +5,6 @@
 
 # Start i3 if present
 [ -e /usr/bin/i3 ] && exec i3
+
+# Reload last pywal colorscheme
+wal -R
