@@ -10,6 +10,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 """""""""""
@@ -113,6 +114,12 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+"""""""
+" WAL "
+"""""""
+
+colorscheme wal
 
 """""""""""""""""
 " FINDING FILES "
