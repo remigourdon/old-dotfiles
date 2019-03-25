@@ -1,0 +1,5 @@
+- link:
+    ~/.config/polybar/launch.sh: gui/polybar/launch.sh
+    ~/.config/polybar/config: gui/polybar/config
+    ~/.config/polybar/scripts: gui/polybar/scripts
+    ~/.config/polybar/modules.ini: gui/polybar/modules.ini

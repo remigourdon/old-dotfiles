@@ -26,6 +26,9 @@ exec --no-startup-id xcompmgr
 # Status bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# redshift
+exec --no-startup-id redshift
+
 ##########
 # COLORS #
 ##########
