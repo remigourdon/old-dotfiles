@@ -11,7 +11,7 @@ fi
 UPDATES=$((UPDATES_ARCH + UPDATES_AUR))
 
 if [ "${UPDATES}" -gt 0 ]; then
-    echo " $(printf "%3s" ${UPDATES})"
+    echo " $(printf "%3s" ${UPDATES})"
 else
-    echo " $(printf "%3s" 0)"
+    echo " $(printf "%3s" 0)"
 fi

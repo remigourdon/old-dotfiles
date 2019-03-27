@@ -16,9 +16,9 @@ gaps outer 15
 # Modifier for moving floating windows
 floating_modifier $mod
 
-####################
-# EXTERNAL SCRIPTS #
-####################
+#####################
+# EXTERNAL PROGRAMS #
+#####################
 
 # Composite manager
 exec --no-startup-id xcompmgr
@@ -28,6 +28,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # redshift
 exec --no-startup-id redshift
+
+# tresorit
+exec --no-startup-id $HOME/.local/share/tresorit/tresorit-daemon
 
 ##########
 # COLORS #

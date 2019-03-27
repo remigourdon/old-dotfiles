@@ -28,7 +28,6 @@ foreground = ${colors.foreground}
 fixed-center = true
 
 width = 100%
-height = 25
 
 padding = 1
 module-margin-left = 1
@@ -43,6 +42,8 @@ font-2 = "Font Awesome 5 Brands:size=11;1"
 [bar/top]
 inherit = bar/main
 
+height = 30
+
 border-bottom-size = 2
 
 modules-left = i3
@@ -53,8 +54,10 @@ modules-right = pulseaudio battery powerbutton
 inherit = bar/main
 bottom = true
 
+height = 35
+
 border-top-size = 2
 
 modules-left = spotify
 modules-center = wireless-network wired-network
-modules-right = arch-updates
+modules-right = tresorit arch-updates
