@@ -20,10 +20,10 @@ floating_modifier $mod
 # EXTERNAL PROGRAMS #
 #####################
 
-# Composite manager
-exec --no-startup-id xcompmgr
+# compton
+exec --no-startup-id compton
 
-# Status bar
+# polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # redshift
