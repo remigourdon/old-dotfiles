@@ -60,36 +60,39 @@ bindsym $mod+Return 	exec $term
 bindsym $mod+Shift+e 	exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Reload i3 configuration
-bindsym $mod+Shift+c 	reload
+bindsym $mod+Shift+c 	    reload
 
 # Restart i3 inplace
-bindsym $mod+Shift+r 	restart
+bindsym $mod+Shift+r 	    restart
 
 # Floating mode
 bindsym $mod+Shift+space	floating toggle
-bindsym $mod+space		focus mode_toggle
+bindsym $mod+space		    focus mode_toggle
+
+# Lock screen
+bindsym $mod+Shift+s	    exec "lock-screen.sh"
 
 ###################
 # WINDOWS BINDINGS #
 ###################
 
-bindsym $mod+f		fullscreen toggle
+bindsym $mod+f		    fullscreen toggle
 
-bindsym $mod+h		focus left
+bindsym $mod+h		    focus left
 bindsym $mod+Shift+h	move left
 
-bindsym $mod+j		focus down
+bindsym $mod+j		    focus down
 bindsym $mod+Shift+j	move down
 
-bindsym $mod+k		focus up
+bindsym $mod+k		    focus up
 bindsym $mod+Shift+k	move up
 
-bindsym $mod+l		focus right
+bindsym $mod+l		    focus right
 bindsym $mod+Shift+l	move right
 
-bindsym $mod+s		split v
+bindsym $mod+s		    split v
 
-bindsym $mod+v		split h
+bindsym $mod+v		    split h
 
 bindsym $mod+Shift+q 	kill
 
