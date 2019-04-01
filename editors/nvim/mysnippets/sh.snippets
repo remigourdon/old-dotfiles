@@ -1,0 +1,73 @@
+snippet bang "Add bash shebang"
+#!/bin/bash
+# ${0:Description}
+endsnippet
+
+snippet shc "Force shellcheck to specific shell"
+# shellcheck shell=${1:bash}
+endsnippet
+
+snippet box "Comment header box"
+#${2:#}
+# ${1:HEADER} #
+#$2
+
+${0:$statements}
+endsnippet
+
+snippet ve "A properly quoted variable"
+"${${1:VAR}}"${0}
+endsnippet
+
+snippet usage "Add a usage function"
+#########
+# USAGE #
+#########
+
+usage() {
+    echo "Usage: $(basename "\${0}") [OPTIONS]
+
+${1:Description}
+
+OPTIONS:
+    ${2:o0}    ${0:#statements}
+    -h    Display this message"
+}
+endsnippet
+
+snippet getopts "Add options parsing"
+###################
+# OPTIONS PARSING #
+###################
+
+while getopts '${1:o}h' ${2:opts} ; do
+    case "${$2}" in
+        ${3:o0})
+            ${0:EXAMPLE="${OPTARG}"}
+            ;;
+        h)
+            usage
+            ;;
+        ?)
+            usage
+            exit 1
+            ;;
+    esac
+done
+shift "$((OPTIND - 1))"
+endsnippet
+
+snippet args "Add arguments parsing"
+################
+# ARGS PARSING #
+################
+
+if [[ \${#} -ne ${2:1} ]] ; then
+    usage
+    exit 1
+else
+    ${1:ARG1}="\${1}"
+fi
+
+${0:#statement}
+endsnippet

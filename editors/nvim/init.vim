@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'dylanaraps/wal.vim'
+Plug 'sirver/ultisnips'
 call plug#end()
 
 """""""""""
@@ -39,6 +40,12 @@ set noswapfile
 " Allow hiding buffers
 set hid
 
+"""""""""""""
+" FILETYPES "
+"""""""""""""
+
+au BufRead,BufNewFile *.source setfiletype sh
+
 """"""""""
 " DISLAY "
 """"""""""
@@ -54,6 +61,10 @@ set tabstop=4 shiftwidth=4 expandtab
 
 " Intendation
 set autoindent
+
+" Display tabs
+set list
+set listchars=tab:>-
 
 """""""""""
 " AIRLINE "
@@ -121,6 +132,18 @@ let g:fzf_action = {
 
 colorscheme wal
 
+"""""""""""""
+" ULTISNIPS "
+"""""""""""""
+
+let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/mysnippets', 'UltiSnips']
+let g:UltiSnipsEditSplit="context"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+nnoremap <Leader>ue :UltiSnipsEdit<cr>
+nnoremap <Leader>ur :call UltiSnips#RefreshSnippets()<cr>
+
 """""""""""""""""
 " FINDING FILES "
 """""""""""""""""
@@ -137,4 +160,4 @@ set wildmode=list:longest,full
 """""""""""""
 
 " Check file in shellcheck:
-map <leader>s :!clear && shellcheck %<CR>
+map <leader>s :!clear && shellcheck -x %<CR>
