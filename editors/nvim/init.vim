@@ -12,6 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'dylanaraps/wal.vim'
 Plug 'sirver/ultisnips'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 """""""""""
