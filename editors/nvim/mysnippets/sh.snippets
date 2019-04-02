@@ -4,15 +4,14 @@ snippet bang "Add bash shebang"
 endsnippet
 
 snippet shc "Force shellcheck to specific shell"
-# shellcheck shell=${1:bash}
+# shellcheck shell=${1:bash}${0}
 endsnippet
 
 snippet box "Comment header box"
 #${2:#}
 # ${1:HEADER} #
 #$2
-
-${0:$statements}
+${0}
 endsnippet
 
 snippet ve "A properly quoted variable"
@@ -47,6 +46,7 @@ while getopts '${1:o}h' ${2:opts} ; do
             ;;
         h)
             usage
+			exit 1
             ;;
         ?)
             usage
@@ -68,6 +68,5 @@ if [[ \${#} -ne ${2:1} ]] ; then
 else
     ${1:ARG1}="\${1}"
 fi
-
-${0:#statement}
+${0}
 endsnippet
