@@ -85,7 +85,8 @@ alias brfi='bladeRF-cli -e info'
 alias brfp='bladeRF-cli -e print'
 
 # Unmount all partitions of a device
-ud() { ls ${1}?* | xargs -n1 umount -l ;}
+ud() { grep -oP "^${1}\d+" /proc/mounts | while read -r mnt ; do umount "${mnt}" ; done ;}
+ude() { ud ${1} && udisksctl power-off -b ${1} ;}
 
 # Move up N directories
 up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
