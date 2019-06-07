@@ -127,6 +127,11 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --color "always" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+
 """""""
 " WAL "
 """""""
