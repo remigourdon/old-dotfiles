@@ -24,6 +24,7 @@ set nocompatible
 
 " Enable plugins
 filetype plugin on
+filetype plugin indent on
 
 " Remap leader
 let mapleader=","

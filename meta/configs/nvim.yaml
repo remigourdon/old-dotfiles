@@ -2,3 +2,4 @@
     ~/.config/nvim/init.vim: editors/nvim/init.vim
     ~/.config/nvim/autoload: editors/nvim/autoload
     ~/.config/nvim/mysnippets: editors/nvim/mysnippets
+    ~/.config/nvim/after/ftplugin: editors/nvim/after/ftplugin
