@@ -120,18 +120,15 @@ let g:airline_symbols.maxlinenr = ''
 """""""
 
 nnoremap <Leader>b :Buffers<cr>
-nnoremap <Leader>f :Files<cr>
+nnoremap <Leader>t :Files<cr>
+nnoremap <Leader>l :Lines<cr>
+nnoremap <Leader>c :Commits<cr>
 
 " Split key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
-
-let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --color "always" '
-
-command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
 """""""
 " WAL "
