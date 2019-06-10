@@ -1,0 +1,18 @@
+# /home/remi/.config/tmuxinator/main.yml
+
+name: main
+root: ~/
+
+windows:
+  - dotfiles:
+      root: ~/.dotfiles
+      layout: main-vertical
+      panes:
+        - vim
+        - git status
+  - stats:
+      layout: main-vertical
+      panes:
+        - htop
+        - 
+        - 
