@@ -9,6 +9,7 @@ git-home
 polybar
 rofi
 tmux
+tmuxinator
 nvim
 vifm
 zathura

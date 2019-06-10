@@ -15,7 +15,6 @@ source ~/.aliases
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-bind -x '"\C-e": fzf | xargs $EDITOR;'
 
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1

@@ -84,6 +84,14 @@ alias brfv='bladeRF-cli -e version'
 alias brfi='bladeRF-cli -e info'
 alias brfp='bladeRF-cli -e print'
 
+# tmux
+alias tml='tmux list-sessions'
+alias tma='tmux attach-session -t'
+alias tmk='tmux kill-session -t'
+
+# tmuxinator
+alias tmx='tmuxinator'
+
 # Unmount all partitions of a device
 ud() { grep -oP "^${1}\d+" /proc/mounts | while read -r mnt ; do umount "${mnt}" ; done ;}
 ude() { ud ${1} && udisksctl power-off -b ${1} ;}
