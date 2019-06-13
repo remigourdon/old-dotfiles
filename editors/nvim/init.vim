@@ -121,6 +121,7 @@ let g:airline_symbols.maxlinenr = ''
 
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>t :GFiles --exclude-standard --others --cached<cr>
+nnoremap <Leader>T :Files<cr>
 nnoremap <Leader>l :Lines<cr>
 nnoremap <Leader>c :Commits<cr>
 
