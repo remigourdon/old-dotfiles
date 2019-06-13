@@ -8,9 +8,9 @@ windows:
       layout: main-horizontal
       panes:
         - nvim
-        -
+        - 
   - server:
       layout: even-horizontal
       panes:
         - npx parcel src/index.html
-        - 
+        - node backend/server.js

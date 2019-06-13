@@ -1,20 +1,18 @@
 # /home/remi/.config/tmuxinator/remote.yml
 
 name: remote
-root: ~/Remotes/<%= @args[0] %>
-on_project_first_start: sshfs <%= @args[0] %>:/home/<%= @args[1] %> /mnt/<%= @args[0] %>
-on_project_stop: umount /mnt/<%= @args[0] %>
+on_project_first_start: sshfs <%= @args[0] %>:/home/pi /mnt/<%= @args[0] %>
 
 windows:
   - editor:
+      root: ~/Remotes/<%= @args[0] %>
       layout: 217f,196x47,0,0[196x39,0,0{157x39,0,0,31,38x39,158,0,38},196x7,0,40,37]
       panes:
         - vim
-        -
-        -
+        - ssh <%= @args[0] %>
+        - 
   - remote:
-      root: ~
-      layout: main-vertical
+      layout: even-vertical
       panes:
         - ssh <%= @args[0] %>
         - ssh <%= @args[0] %> tail -f /var/log/syslog
