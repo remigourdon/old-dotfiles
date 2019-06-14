@@ -3,6 +3,7 @@ profile
 aliases
 fonts
 bash
+lf
 git-work
 tmux
 tmuxinator

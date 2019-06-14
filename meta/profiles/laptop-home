@@ -6,6 +6,7 @@ aliases
 fonts
 bash
 git-home
+lf
 polybar
 rofi
 tmux
