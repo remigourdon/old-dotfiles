@@ -20,7 +20,7 @@ alert = ${xrdb:color3:#222}
 
 [bar/main]
 
-monitor =
+monitor = ${env:MONITOR:}
 
 background = ${colors.background}
 foreground = ${colors.foreground}
