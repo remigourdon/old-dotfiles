@@ -156,6 +156,10 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
 
+# Screen capture
+bindsym --release Print exec scrot -e 'mv $f ~/Pictures/'
+bindsym --release $mod+Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+
 #########################
 # WORKSPACE ASSIGNMENTS #
 #########################
