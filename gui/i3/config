@@ -56,6 +56,8 @@ client.background       $bg
 bindsym $mod+d 		    exec "rofi -show drun"
 bindsym $mod+Return 	exec $term
 bindsym $mod+q          exec lenovo-dock.sh
+bindsym $mod+w          exec sxiv -t -o ~/Pictures/wallpapers/ | head -n1 | xargs set-wallpaper.sh
+bindsym $mod+Shift+W    exec sxiv -t -o ~/Pictures/wallpapers/ | head -n1 | xargs set-wallpaper.sh -o
 
 # Exit i3 and log out of X session
 bindsym $mod+Shift+e 	exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
