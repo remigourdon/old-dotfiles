@@ -1,11 +1,16 @@
 x11
+i3
+compton
 profile
 aliases
 fonts
 bash
-lf
 git-work
+lf
+polybar
+rofi
 tmux
 tmuxinator
 nvim
 zathura
+redshift
