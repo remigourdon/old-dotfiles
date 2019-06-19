@@ -32,6 +32,9 @@ exec --no-startup-id redshift
 # tresorit
 exec --no-startup-id $HOME/.local/share/tresorit/tresorit-daemon
 
+# dunst
+exec --no-startup-id dunst
+
 ##########
 # COLORS #
 ##########

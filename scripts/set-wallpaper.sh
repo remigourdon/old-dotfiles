@@ -69,7 +69,7 @@ fi
 cp -f "${INPUT_IMAGE}" "${WAL_IMG}"
 
 if [[ "${SET_THEME}" = true ]] ; then
-    wal -c && wal -q -i "${WAL_IMG}"
+    wal -c && wal -q -o after-wal.sh -i "${WAL_IMG}"
 else
     feh --bg-scale "${WAL_IMG}"
 fi
