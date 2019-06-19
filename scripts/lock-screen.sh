@@ -19,9 +19,10 @@ convert "${WALL_IMG}" +dither -colors 5 -define \
 set -- $(</tmp/colors.txt)
 
 # Prepare lock image
+IMAGE_SIZE="256"
 convert "${LOCK_IMG}" -fuzz 50% -fill "${1}" -opaque "#30AF91" /tmp/lock.png
 convert /tmp/lock.png -fuzz 10% -fill "${5}" -opaque "#FFFFFF" /tmp/lock.png
-convert /tmp/lock.png -resize 256x256 /tmp/lock.png
+convert /tmp/lock.png -resize "${IMAGE_SIZE}x${IMAGE_SIZE}" /tmp/lock.png
 
 # Take a screenshot
 scrot /tmp/screen.png
@@ -34,16 +35,17 @@ REG_DIMS="([[:digit:]]+)/[[:digit:]]+x([[:digit:]]+)/[[:digit:]]+"
 REG_OFFS="([\+\-][[:digit:]]+)([\+\-][[:digit:]]+)"
 xrandr --listmonitors | \
     while read -r line ; do
-        if [[ ${line} =~ ${REG_DIMS} ]] ; then
+        params="$(cut -d' ' -f3 <<< "${line}")"
+        if [[ ${params} =~ ${REG_DIMS} ]] ; then
             width="${BASH_REMATCH[1]}"
             height="${BASH_REMATCH[2]}"
-            if [[ "${line}" =~ ${REG_OFFS} ]] ; then
+            if [[ "${params}" =~ ${REG_OFFS} ]] ; then
                 offsetx="${BASH_REMATCH[1]}"
                 offsety="${BASH_REMATCH[2]}"
             fi
-            posx=$((offsetx + width / 2 - 256 / 2))
+            posx=$((offsetx + width / 2 - "${IMAGE_SIZE}" / 2))
             [[ "${posx}" -ge 0 ]] && posx="+${posx}"
-            posy=$((offsety + height / 2 - 256 / 2))
+            posy=$((offsety + height / 2 - "${IMAGE_SIZE}" / 2))
             [[ "${posy}" -ge 0 ]] && posy="+${posy}"
             convert /tmp/screen.png /tmp/lock.png -geometry "${posx}${posy}" -composite -matte /tmp/screen.png
         fi

@@ -23,6 +23,9 @@ floating_modifier $mod
 # compton
 exec --no-startup-id compton
 
+# locker
+exec --no-startup-id xss-lock -- lock-screen.sh
+
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -76,7 +79,7 @@ bindsym $mod+Shift+space	floating toggle
 bindsym $mod+space		    focus mode_toggle
 
 # Lock screen
-bindsym $mod+Shift+s	    exec "lock-screen.sh"
+bindsym $mod+Shift+s	    exec loginctl lock-session
 
 ###################
 # WINDOWS BINDINGS #
