@@ -83,9 +83,12 @@ alias tmk='tmux kill-session -t'
 # tmuxinator
 alias tmx='tmuxinator'
 
-# Unmount all partitions of a device
-ud() { grep -oP "^${1}\d+" /proc/mounts | while read -r mnt ; do umount "${mnt}" ; done ;}
-ude() { ud ${1} && udisksctl power-off -b ${1} ;}
+# udiskie
+alias udm='udiskie-mount -r'
+alias udu='udiskie-umount --force'
+alias udua='udiskie-umount --all'
+alias udd='udiskie-umount --force --detach'
+alias udda='udiskie-umount --all --detach'
 
 # Move up N directories
 up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
