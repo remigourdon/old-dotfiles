@@ -3,11 +3,16 @@
 # Load Xresources
 [ -e ~/.Xresources ] && xrdb ~/.Xresources
 
+# Start the gnome keyring daemon
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
 # Reload last pywal colorscheme
 wal -R
 
 # Start udiskie
 udiskie &
 
-# Start i3 if present
-[ -e /usr/bin/i3 ] && exec i3
+# Start i3
+exec i3
