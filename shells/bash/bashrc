@@ -8,7 +8,11 @@ shopt -s autocd
 HISTSIZE= HISTFILESIZE=
 
 # Prompt
-export PS1="\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 1)\]\W \[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+source /usr/share/git/git-prompt.sh
+export PS1='\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 1)\]\W\[$(tput setaf 4)\]$(__git_ps1 " (%s)") \[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]'
 
 # Setup aliases
 source ~/.aliases
