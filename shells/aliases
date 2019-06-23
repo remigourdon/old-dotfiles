@@ -57,7 +57,13 @@ alias gl='git log'
 alias gd='git diff'
 alias ga='git add'
 alias gaa='git add .'
+alias gh='git checkout'
+alias ghm='git checkout master'
+alias ghb='git checkout -b'
+alias gb='git branch'
+alias gc='git commit'
 alias gcm='git commit -m'
+alias gca='git commit --amend'
 alias gri='git rebase --interactive'
 
 # Remove host from SSH keygen know hosts
