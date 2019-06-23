@@ -60,4 +60,4 @@ border-top-size = 2
 
 modules-left = spotify
 modules-center = wireless-network wired-network
-modules-right = tresorit arch-updates
+modules-right = tresorit
