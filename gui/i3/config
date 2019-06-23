@@ -23,6 +23,9 @@ floating_modifier $mod
 # compton
 exec --no-startup-id compton
 
+# flashfocus
+exec_always --no-startup-id flashfocus --config $HOME/.config/flashfocus/flashfocus.yml
+
 # locker
 exec --no-startup-id xss-lock -- lock-screen.sh
 
@@ -80,6 +83,9 @@ bindsym $mod+space		    focus mode_toggle
 
 # Lock screen
 bindsym $mod+Shift+s	    exec loginctl lock-session
+
+# Current flashfocus
+bindsym $mod+n exec --no-startup-id flash_window
 
 ###################
 # WINDOWS BINDINGS #
