@@ -3,6 +3,9 @@
 # Load Xresources
 [ -e ~/.Xresources ] && xrdb ~/.Xresources
 
+# Set keyboard layout and variant
+setxkbmap -layout us -variant altgr-intl
+
 # Start the gnome keyring daemon
 dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
