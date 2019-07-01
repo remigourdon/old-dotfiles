@@ -19,3 +19,7 @@ source ~/.aliases
 
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1
+
+# Go
+export GOPATH="${HOME}/Projects/go"
+export PATH="$PATH:${GOPATH}/bin"
