@@ -14,6 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'dylanaraps/wal.vim'
 Plug 'sirver/ultisnips'
 Plug 'jiangmiao/auto-pairs'
+Plug 'fatih/vim-go'
 call plug#end()
 
 """""""""""
