@@ -1,3 +1,2 @@
 - link:
-    ~/.local/bin/lf: gui/lf/lf
     ~/.config/lf/lfrc: gui/lf/lfrc
