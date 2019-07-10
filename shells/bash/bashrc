@@ -21,5 +21,5 @@ source ~/.aliases
 export PIPENV_VENV_IN_PROJECT=1
 
 # Go
-export GOPATH="${HOME}/Projects/go"
+export GOPATH="${HOME}/Sources/go"
 export PATH="$PATH:${GOPATH}/bin"
