@@ -185,5 +185,6 @@ bindsym --release $mod+Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 #########################
 
 assign [class="(?i)Firefox"] $ws1
-assign [class="(?i)Boostnote"] $ws3
+assign [class="(?i)code-oss"] $ws3
+assign [class="(?i)Boostnote"] $ws4
 for_window [class="(?i)Spotify"] move to workspace $ws8
