@@ -23,3 +23,8 @@ export PIPENV_VENV_IN_PROJECT=1
 # Go
 export GOPATH="${HOME}/Sources/go"
 export PATH="$PATH:${GOPATH}/bin"
+
+# Ruby
+if which ruby >/dev/null && which gem >/dev/null; then
+    export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
