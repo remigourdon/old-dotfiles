@@ -7,9 +7,8 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Find interfaces
-INTERFACES="$(ip link show | grep -o '^[[:digit:]]: [[:alnum:]]\+' | cut -d' ' -f2)"
-WIRELESS="$(grep '^wlp' <<<"${INTERFACES}" | tail -n1)"
-WIRED="$(grep '^en' <<<"${INTERFACES}" | tail -n1)"
+WIRELESS="$(nmcli connection show --active | awk '{if ($3=="wifi") {print $4;exit}}')"
+WIRED="$(nmcli connection show --active | awk '{if ($3=="ethernet") {print $4;exit}}')"
 
 if type "xrandr" &>/dev/null ; then
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
