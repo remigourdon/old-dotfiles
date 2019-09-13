@@ -2,11 +2,13 @@
 # Rofi script to list PDFs under HOME directory
 set -u # Treat unset variables and parameters as errors
 
+LAUNCHER="rofi -dmenu -i -p pdfs -format d"
+
 LIST="$(fd -e pdf --exclude "TresoritDrive/" . ~)"
 
 FILTERED=$(echo "${LIST}" \
     | sed -e "s#${HOME}/\(.*\)\.pdf#\1#gi" \
-    | rofi -dmenu -i -p "pdfs" -format d)
+    | ${LAUNCHER})
 
 case ${FILTERED} in
     "") ;;

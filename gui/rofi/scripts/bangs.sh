@@ -9,8 +9,8 @@ declare -A COMMANDS
 # BANGS #
 #########
 
-# Program launcher
-COMMANDS["apps"]="rofi -combi-modi window,drun -show combi"
+# Power
+COMMANDS["power"]="${HOME}/.config/rofi/scripts/power.sh"
 
 # PDF opener
 COMMANDS["pdfs"]="${HOME}/.config/rofi/scripts/pdfs.sh"
