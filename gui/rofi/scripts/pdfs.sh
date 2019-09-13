@@ -11,7 +11,7 @@ FILTERED=$(echo "${LIST}" \
     | ${LAUNCHER})
 
 case ${FILTERED} in
-    "") ;;
-    0) ;;
+    "") exit 1 ;;
+    0) exit 1 ;;
     *) zathura "$(echo "${LIST}" | sed -n "${FILTERED}p")" ;;
 esac

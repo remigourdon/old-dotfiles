@@ -10,11 +10,9 @@ OPTION=$(echo -e "${OPTIONS}" | ${LAUNCHER})
 
 if [[ "${#OPTION}" -gt 0 ]] ; then
     case "${OPTION}" in
-        "") ;;
-        0) ;;
         1) loginctl lock-session ;;
         2) systemctl reboot ;;
         3) systemctl poweroff ;;
-        *) ;;
+        *) exit 1 ;;
     esac
 fi
