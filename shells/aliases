@@ -96,5 +96,8 @@ alias udua='udiskie-umount --all'
 alias udd='udiskie-umount --force --detach'
 alias udda='udiskie-umount --all --detach'
 
+# ansible
+alias ap='ansible-playbook'
+
 # Move up N directories
 up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
