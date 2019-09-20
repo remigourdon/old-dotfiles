@@ -18,6 +18,9 @@ COMMANDS["pdfs"]="${HOME}/.config/rofi/scripts/pdfs.sh"
 # VirtualBox
 COMMANDS["vbox"]="${HOME}/.config/rofi/scripts/vbox.sh"
 
+# tmux
+COMMANDS["tmux"]="${HOME}/.config/rofi/scripts/tmux.sh"
+
 ############
 # GENERATE #
 ############
