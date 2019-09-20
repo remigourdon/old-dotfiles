@@ -1,3 +1,5 @@
 [user]
 	name = rgourdon
 	email = rgourdon@ubiquitilink.com
+[credential]
+	helper = store
