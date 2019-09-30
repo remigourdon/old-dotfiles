@@ -8,23 +8,30 @@ shopt -s autocd
 HISTSIZE= HISTFILESIZE=
 
 # Prompt
-source /usr/share/git/git-prompt.sh
+source "/usr/share/git/git-prompt.sh"
 export PS1='\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 1)\]\W\[$(tput setaf 4)\]$(__git_ps1 " (%s)") \[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]'
 
 # Setup aliases
-source ~/.aliases
+source "${HOME}/.aliases"
 
 # FZF
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
 
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1
 
 # Go
-export GOPATH="${HOME}/Sources/go"
-export PATH="$PATH:${GOPATH}/bin"
+if [ -d "${HOME}/Sources/go" ] ; then
+    export GOPATH="${HOME}/Sources/go"
+    export PATH="$PATH:${GOPATH}/bin"
+fi
 
 # Ruby
 if which ruby &>/dev/null && which gem &>/dev/null; then
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
+# Local configuration
+if [ -f "${HOME}/.bash_local" ] ; then
+    source "${HOME}/.bash_local"
 fi
