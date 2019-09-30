@@ -44,6 +44,9 @@ set noswapfile
 " Allow hiding buffers
 set hid
 
+" Change directory
+nnoremap <leader>lcd :lcd %:p:h<CR>:pwd<CR>
+
 """""""""""""
 " FILETYPES "
 """""""""""""
