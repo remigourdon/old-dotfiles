@@ -33,5 +33,8 @@ if which ruby &>/dev/null && which gem &>/dev/null; then
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+# Node Version Manager
+[ -e /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+
 # Local configuration
 [ -e "${HOME}/.bash_local" ] && source "${HOME}/.bash_local"
