@@ -70,7 +70,7 @@ alias gri='git rebase --interactive'
 alias sshr='ssh-keygen -f $HOME/.ssh/known_hosts -R'
 
 # neovim
-alias vim='nvim'
+command -v nvim && alias vim='nvim'
 
 # netstat
 alias ports='netstat -tulanp'
