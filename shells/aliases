@@ -25,6 +25,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# hexdump
+alias hd='hexdump -C'
+
 # dd
 alias dd='dd status=progress'
 
@@ -70,7 +73,7 @@ alias gri='git rebase --interactive'
 alias sshr='ssh-keygen -f $HOME/.ssh/known_hosts -R'
 
 # neovim
-command -v nvim && alias vim='nvim'
+command -v nvim 2>&1 >/dev/null && alias vim='nvim'
 
 # netstat
 alias ports='netstat -tulanp'
