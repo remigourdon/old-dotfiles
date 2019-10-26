@@ -8,8 +8,9 @@ shopt -s autocd
 HISTSIZE= HISTFILESIZE=
 
 # Prompt
-if [ -e "/usr/share/git/git-prompt.sh" ] ; then
-    source "/usr/share/git/git-prompt.sh"
+GIT_PROMPT="${HOME}/.dotfiles/scripts/git-prompt.sh"
+if [ -e "${GIT_PROMPT}" ] ; then
+    source "${GIT_PROMPT}"
     export PS1='\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 1)\]\W\[$(tput setaf 4)\]$(__git_ps1 " (%s)") \[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]'
 fi
 
@@ -38,3 +39,5 @@ fi
 
 # Local configuration
 [ -e "${HOME}/.bash_local" ] && source "${HOME}/.bash_local"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
