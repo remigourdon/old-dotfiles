@@ -7,6 +7,9 @@ shopt -s autocd
 # Infinite history
 HISTSIZE= HISTFILESIZE=
 
+# Enable completion
+[ -e /etc/bash_completion ] && source /etc/bash_completion
+
 # Prompt
 GIT_PROMPT="${HOME}/.dotfiles/scripts/git-prompt.sh"
 if [ -e "${GIT_PROMPT}" ] ; then
