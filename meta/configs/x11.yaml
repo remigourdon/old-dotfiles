@@ -1,3 +1,4 @@
 - link:
     ~/.xinitrc: gui/x11/xinitrc
+    ~/.xsession: gui/x11/xinitrc
     ~/.Xresources: gui/x11/Xresources
