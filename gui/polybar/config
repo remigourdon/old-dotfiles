@@ -48,7 +48,7 @@ border-bottom-size = 2
 
 modules-left = i3
 modules-center = date redshift
-modules-right = pulseaudio battery
+modules-right = brightness pulseaudio battery
 
 [bar/bottom]
 inherit = bar/main
