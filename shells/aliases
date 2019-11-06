@@ -4,9 +4,6 @@ alias sbrc='source ~/.bashrc'
 # sudo (this tick allows to run sudo command with user's PATH and bashrc)
 alias sudo='sudo '
 
-# Run sudo with user PATH
-alias sudoe='sudo env PATH=$PATH'
-
 # Editor
 alias e='$EDITOR'
 

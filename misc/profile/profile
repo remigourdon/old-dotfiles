@@ -1,23 +1,5 @@
 #!/bin/sh
 
-# Function to add subdirectories to PATH
-addSubdirsToPath() {
-    DIR="${1}"
-    if [ -d "${DIR}" ] ; then
-        DIRS="$(du "${DIR}" | grep -v "/.git" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
-        export PATH="${PATH}:${DIRS}"
-    fi
-}
-
-# Add .scripts and all subdirectories to $PATH
-addSubdirsToPath "${HOME}/.dotfiles/scripts/"
-
-# Add Projects/scripts and all subdirectories to $PATH
-addSubdirsToPath "${HOME}/Projects/scripts/"
-
-# Add local bin folder to path
-export PATH="${PATH}:${HOME}/.local/bin"
-
 # Set default programs
 export EDITOR="nvim"
 export TERMINAL="st"
@@ -27,6 +9,27 @@ export FILE="ranger"
 
 # Start X11 server if i3 is not already running
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
+
+# Go
+if [ -d "${HOME}/Sources/go" ] ; then
+    export GOPATH="${HOME}/Sources/go"
+    export PATH="$PATH:${GOPATH}/bin"
+fi
+
+# Ruby
+if which ruby &>/dev/null && which gem &>/dev/null; then
+    export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
+# Dotfiles scripts
+if [ -d "${HOME}/.dotfiles/scripts" ] ; then
+    export PATH="$PATH:${HOME}/.dotfiles/scripts"
+fi
+
+# Local binaries
+if [ -d "${HOME}/.local/bin" ] ; then
+    export PATH="$PATH:${HOME}/.local/bin"
+fi
 
 # Load bashrc
 echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && . "${HOME}/.bashrc"

@@ -26,17 +26,6 @@ fi
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1
 
-# Go
-if [ -e "${HOME}/Sources/go" ] ; then
-    export GOPATH="${HOME}/Sources/go"
-    export PATH="$PATH:${GOPATH}/bin"
-fi
-
-# Ruby
-if which ruby &>/dev/null && which gem &>/dev/null; then
-    export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-
 # Node Version Manager
 [ -e /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 
