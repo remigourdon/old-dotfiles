@@ -51,6 +51,12 @@ alias c='cat'
 # Use highlight for colored cat
 alias cc='highlight --out-format=ansi'
 
+# rsync
+alias rsya='rsync --progress -azvh'
+alias rsyda='rsync --dry-run -azvh'
+alias rsyad='rsync --progress -azvh --delete'
+alias rsydad='rsync --dry-run -azvh --delete'
+
 # git
 alias gs='git status'
 alias gl='git log'
