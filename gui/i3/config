@@ -174,12 +174,3 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
 # Screen capture
 bindsym --release Print exec scrot -e 'mv $f ~/Pictures/'
 bindsym --release $mod+Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
-
-#########################
-# WORKSPACE ASSIGNMENTS #
-#########################
-
-assign [class="(?i)Firefox"] $ws1
-assign [class="(?i)code-oss"] $ws3
-assign [class="(?i)Boostnote"] $ws4
-for_window [class="(?i)Spotify"] move to workspace $ws8
