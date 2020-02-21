@@ -104,3 +104,16 @@ alias ap='ansible-playbook'
 
 # Move up N directories
 up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
+
+# Display CSV
+csv() {
+    if [ "$#" -ne 0 ] ; then
+        for file in "$@" ; do
+            [ -z "${data}" ] && local data="> ${file}" || local data="${data}\n\n> ${file}"
+            data="${data}\n$(column -t -s, -n "${file}")"
+        done
+        echo -e "${data}" | less -F -S -X -K
+    else
+        column -t -s, -n "$@" | less -F -S -X -K
+    fi
+}
