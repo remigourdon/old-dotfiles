@@ -117,3 +117,18 @@ csv() {
         column -t -s, -n "$@" | less -F -S -X -K
     fi
 }
+
+# recursive git commands
+gr() {
+    for d in $(find . -mindepth 1 -type d -name '.git') ; do
+        pushd "${d%.git}" >/dev/null
+        if git rev-parse --is-inside-work-tree >/dev/null 2>&1 ; then
+            echo -e "\e[34m> ${PWD}\e[0m"
+            git --git-dir="${PWD}/.git" --work-tree="${PWD}" "${@}"
+            echo
+        fi
+        popd >/dev/null
+    done
+}
+alias grl='gr log HEAD --oneline --no-walk'
+alias grs='gr status --short'
