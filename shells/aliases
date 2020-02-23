@@ -75,6 +75,9 @@ alias gri='git rebase --interactive'
 # Remove host from SSH keygen know hosts
 alias sshr='ssh-keygen -f $HOME/.ssh/known_hosts -R'
 
+# Set date on remote
+sshd() { echo "Setting date to local on ${1}" ; ssh "${1}" sudo date -s @`date +%s` ; }
+
 # neovim
 command -v nvim 2>&1 >/dev/null && alias vim='nvim'
 
