@@ -123,14 +123,19 @@ csv() {
 
 # Display JSON
 json() {
+    if command -v bat >/dev/null ; then
+        PAGER="bat -l JSON --style plain"
+    else
+        PAGER="less -F -S -X -K"
+    fi
     if [ "$#" -ne 0 ] ; then
         for file in "$@" ; do
             [ -z "${data}" ] && local data="> ${file}" || local data="${data}\n\n> ${file}"
             data="${data}\n$(python -m json.tool "${file}")"
         done
-        echo -e "${data}" | less -F -S -X -K
+        echo -e "${data}" | ${PAGER}
     else
-        cat | python -m json.tool | less -F -S -X -K
+        cat | python -m json.tool | ${PAGER}
     fi
 }
 
