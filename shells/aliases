@@ -121,6 +121,19 @@ csv() {
     fi
 }
 
+# Display JSON
+json() {
+    if [ "$#" -ne 0 ] ; then
+        for file in "$@" ; do
+            [ -z "${data}" ] && local data="> ${file}" || local data="${data}\n\n> ${file}"
+            data="${data}\n$(python -m json.tool "${file}")"
+        done
+        echo -e "${data}" | less -F -S -X -K
+    else
+        cat | python -m json.tool | less -F -S -X -K
+    fi
+}
+
 # recursive git commands
 gr() {
     for d in $(find . -mindepth 1 -type d -name '.git') ; do
