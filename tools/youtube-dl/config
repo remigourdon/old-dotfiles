@@ -1,0 +1,5 @@
+# Download best video only format but no bigger than 50 MB
+-f 'best[height<=480]'
+
+# Save all videos in the Videos/youtube directory
+-o ~/Videos/youtube/%(title)s-%(id)s.%(ext)s
