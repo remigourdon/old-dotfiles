@@ -4,6 +4,59 @@ snippet bang "Add bash shebang"
 set -u # Treat unset variables and parameters as errors
 endsnippet
 
+snippet basis "Add a bash shebang usage and getopts functions"
+#!/bin/bash
+# ${1:Description}
+set -u # Treat unset variables and parameters as errors
+
+#########
+# USAGE #
+#########
+
+usage() {
+    echo "Usage: $(basename "\${0}") [OPTIONS]
+
+$1.
+
+OPTIONS:
+    -h    Display this message"
+}
+
+###################
+# OPTIONS PARSING #
+###################
+
+while getopts 'h' opts ; do
+    case "${opts}" in
+        h)
+            usage
+			exit 1
+            ;;
+        ?)
+            usage
+            exit 1
+            ;;
+    esac
+done
+shift "$((OPTIND - 1))"
+
+${0}
+endsnippet
+
+snippet args "Add arguments parsing"
+################
+# ARGS PARSING #
+################
+
+if [[ \${#} -ne ${2:1} ]] ; then
+    usage
+    exit 1
+else
+    ${1:ARG1}="\${1}"
+fi
+${0}
+endsnippet
+
 snippet shellcheck "Typical shellcheck options"
 # shellcheck ${1:shell=bash} ${2:disable=SC1091}${0}
 endsnippet
@@ -72,59 +125,6 @@ snippet ceof "A cat with EOF"
 cat >${1:&1} <<EOF
 ${0}
 EOF
-endsnippet
-
-snippet usage "Add a usage function"
-#########
-# USAGE #
-#########
-
-usage() {
-    echo "Usage: $(basename "\${0}") [OPTIONS]
-
-${1:Description}
-
-OPTIONS:
-    ${2:o0}    ${0:#statements}
-    -h    Display this message"
-}
-endsnippet
-
-snippet getopts "Add options parsing"
-###################
-# OPTIONS PARSING #
-###################
-
-while getopts '${1:o}h' ${2:opts} ; do
-    case "${$2}" in
-        ${3:o0})
-            ${0:EXAMPLE="${OPTARG}"}
-            ;;
-        h)
-            usage
-			exit 1
-            ;;
-        ?)
-            usage
-            exit 1
-            ;;
-    esac
-done
-shift "$((OPTIND - 1))"
-endsnippet
-
-snippet args "Add arguments parsing"
-################
-# ARGS PARSING #
-################
-
-if [[ \${#} -ne ${2:1} ]] ; then
-    usage
-    exit 1
-else
-    ${1:ARG1}="\${1}"
-fi
-${0}
 endsnippet
 
 snippet function "A function"
