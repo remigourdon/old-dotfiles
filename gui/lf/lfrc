@@ -90,9 +90,7 @@ cmd zip ${{
 # unmount archive
 cmd uarchivemount ${{
     if [ ${f%-archivemount} != $f ] ; then
-        fusermount -u $(readlink -f $f)
-        rm -r $f
-        lf -remote "send $id reload"
+        fusermount -u $(readlink -f $f) && rm -r $f
     fi
 }}
 
