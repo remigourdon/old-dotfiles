@@ -92,6 +92,10 @@ map c
 # put lf in the background
 map <c-z> $kill -STOP $PPID
 
+# tmux splits
+map S %tmux split -v lf
+map V %tmux split -h lf
+
 # bat pager
 map I $bat --paging=always $f
 

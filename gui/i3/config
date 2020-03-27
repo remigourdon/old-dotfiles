@@ -164,7 +164,7 @@ bindsym $mod+z move workspace to output up
 #########################
 
 # File manager
-bindsym $mod+m exec --no-startup-id $term -e "lf"
+bindsym $mod+m exec --no-startup-id $term -e bash -c 'tmux new-session -A -s lf lf'
 
 # Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
