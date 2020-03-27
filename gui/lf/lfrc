@@ -1,40 +1,31 @@
-# interpreter for shell commands (needs to be POSIX compatible)
+#########
+# SHELL #
+#########
+
+# set POSIX complient shell to use
 set shell sh
 
-# set '-eu' options for shell commands
-# These options are used to have safer shell commands. Option '-e' is used to
-# exit on error and option '-u' is used to give error for unset variables.
-# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
-# $fx variables contain names with '*' or '?' characters. However, this option
-# is used selectively within individual commands as it can be limiting at
-# times.
+# set shell options
 set shellopts '-eu'
 
 # set internal field separator (IFS) to "\n" for shell commands
-# This is useful to automatically split file names in $fs and $fx properly
-# since default file separator used in these variables (i.e. 'filesep' option)
-# is newline. You need to consider the values of these options and create your
-# commands accordingly.
 set ifs "\n"
+
+#############
+# INTERFACE #
+#############
 
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
-# use enter for shell commands
-map <enter> shell
+############
+# COMMANDS #
+############
 
-# execute current file (must be executable)
-map x $$f
-map X !$f
+# show lf documentation
+cmd doc ${{ lf -doc | less }}
 
-# dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
-
-# define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
+# open file(s)
 cmd open ${{
     case $(file --mime-type $f -b) in
         application/pdf) $READER $fx;;
@@ -44,32 +35,19 @@ cmd open ${{
     esac
 }}
 
-# rename current file without overwrite
-cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-map r push :rename<space>
+# make directories
+cmd mkdir %mkdir -p "$@"
 
-# make sure trash folder exists
-# %mkdir -p ~/.trash
+# rename file (no overwrite)
+cmd rename %[ -e $1 ] && printf "'$1' already exists" || mv $f $1
 
-# move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash
+# trash file(s)
+cmd trash %mkdir -p ~/.trash && mv $fx ~/.trash
 
-# define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ $ans = "y" ] && rm -rf $fx
-# }}
+# delete file(s)
+cmd delete %rm -rf $fx
 
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
-
-# extract the current file with the right command
-# (xkcd link: https://xkcd.com/1168/)
+# extract file
 cmd extract ${{
     set -f
     case $f in
@@ -82,7 +60,7 @@ cmd extract ${{
     esac
 }}
 
-# compress current file or selected files with tar and gunzip
+# compress file(s) with tar and gunzip
 cmd tar ${{
     set -f
     mkdir $1
@@ -91,7 +69,7 @@ cmd tar ${{
     rm -rf $1
 }}
 
-# compress current file or selected files with zip
+# compress file(s) with zip
 cmd zip ${{
     set -f
     mkdir $1
@@ -99,3 +77,75 @@ cmd zip ${{
     zip -r $1.zip $1
     rm -rf $1
 }}
+
+##############
+# UNMAPPINGS #
+##############
+
+map r
+map c
+
+############
+# MAPPINGS #
+############
+
+# put lf in the background
+map <c-z> $kill -STOP $PPID
+
+# bat pager
+map I $bat --paging=always $f
+
+# clear selection
+map C clear
+
+# use enter for shell commands
+map <enter> shell
+
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
+# dedicated keys for file opener actions
+map o &mimeopen $f
+map O $mimeopen --ask $f
+
+# make directories
+map a push :mkdir<space>
+
+# rename current file
+map rn push :rename<space>
+
+# bulk rename with vimdir
+map rN $vidir $fx
+
+# remove file(s)
+map rm trash
+map rM delete
+
+# gotos
+map gh cd ~/
+map gd cd ~/Documents/
+map gl cd ~/Downloads/
+map gp cd ~/Projects/
+map gi cd ~/Images/
+map gq cd ~/QNAP/Public/
+map gs cd ~/Sources/
+map gb cd ~/Sandbox/
+map gt cd ~/Data/
+map gT cd ~/.trash/
+map gc cd ~/.dotfiles/
+map gC cd ~/.config/
+
+# configs
+map ce $$EDITOR ~/.profile
+map ca $$EDITOR ~/.aliases
+map cb $$EDITOR ~/.bashrc
+map cl $$EDITOR ~/.config/lf/lfrc
+map cv $$EDITOR ~/.config/nvim/init.vim
+map cpl $$EDITOR ~/.config/polybar/launch.sh
+map cpm $$EDITOR ~/.config/polybar/modules.ini
+map cz $$EDITOR ~/.config/zathura/zathurarc
+map ct $$EDITOR ~/.tmux.conf
+map ci $$EDITOR ~/.config/i3/config
+map cy $$EDITOR ~/.config/youtube-dl/config
+map cd $$EDITOR ~/.config/dunst/dunstrc
