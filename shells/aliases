@@ -22,6 +22,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# lfcd
+alias cl="lfcd"
+
 # hexdump
 alias hd='hexdump -C'
 
