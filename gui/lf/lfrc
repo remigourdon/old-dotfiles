@@ -23,11 +23,20 @@ set scrolloff 10
 ############
 
 # show lf documentation
-cmd doc ${{ lf -doc | less }}
+cmd doc $lf -doc | less
 
 # open file(s)
 cmd open ${{
     case $(file --mime-type $f -b) in
+        application/zip|application/gzip|application/x-xz|application/x-rar-compressed|application/x-7z-compressed|application/x-bzip2)
+            mntdir="$f-archivemount"
+            [ ! -d "$mntdir" ] && {
+                mkdir "$mntdir"
+                archivemount "$f" "$mntdir"
+            }
+            lf -remote "send $id cd \"$mntdir\""
+            lf -remote "send $id reload"
+            ;;
         application/pdf) $READER $fx;;
         image/*) sxiv $fx;;
         text/*) $EDITOR $fx;;
@@ -78,6 +87,15 @@ cmd zip ${{
     rm -rf $1
 }}
 
+# unmount archive
+cmd uarchivemount ${{
+    if [ ${f%-archivemount} != $f ] ; then
+        fusermount -u $(readlink -f $f)
+        rm -r $f
+        lf -remote "send $id reload"
+    fi
+}}
+
 ##############
 # UNMAPPINGS #
 ##############
@@ -122,9 +140,15 @@ map rn push :rename<space>
 # bulk rename with vimdir
 map rN $vidir $fx
 
+# open in editor using fzf
+map f $$EDITOR $(~/.fzf/bin/fzf)
+
 # remove file(s)
 map rm trash
 map rM delete
+
+# umounts
+map Ua uarchivemount
 
 # gotos
 map gh cd ~/
