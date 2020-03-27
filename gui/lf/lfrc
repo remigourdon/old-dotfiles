@@ -100,6 +100,7 @@ cmd uarchivemount ${{
 
 map r
 map c
+map f
 
 ############
 # MAPPINGS #
@@ -138,15 +139,12 @@ map rn push :rename<space>
 # bulk rename with vimdir
 map rN $vidir $fx
 
-# open in editor using fzf
-map f $$EDITOR $(~/.fzf/bin/fzf)
-
 # remove file(s)
 map rm trash
 map rM delete
 
 # umounts
-map Ua uarchivemount
+map Ua :uarchivemount
 
 # gotos
 map gh cd ~/
@@ -166,7 +164,7 @@ map gC cd ~/.config/
 map ce $$EDITOR ~/.profile
 map ca $$EDITOR ~/.aliases
 map cb $$EDITOR ~/.bashrc
-map cl $$EDITOR ~/.config/lf/lfrc
+map cl $$EDITOR ~/.config/lf/lfrc ; lf -remote "send $id source ~/.config/lf/lfrc"
 map cv $$EDITOR ~/.config/nvim/init.vim
 map cpl $$EDITOR ~/.config/polybar/launch.sh
 map cpm $$EDITOR ~/.config/polybar/modules.ini
