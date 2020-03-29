@@ -105,8 +105,8 @@ alias udua='udiskie-umount --all'
 alias udd='udiskie-umount --force --detach'
 alias udda='udiskie-umount --all --detach'
 
-# ansible
-alias ap='ansible-playbook'
+# json
+alias json='jq "."'
 
 # Move up N directories
 up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
@@ -134,24 +134,6 @@ tsv() {
         echo -e "${data}" | less -F -S -X -K
     else
         column -t -s, -n "$@" | less -F -S -X -K
-    fi
-}
-
-# Display JSON
-json() {
-    if command -v bat >/dev/null ; then
-        PAGER="bat -l JSON --style plain"
-    else
-        PAGER="less -F -S -X -K"
-    fi
-    if [ "$#" -ne 0 ] ; then
-        for file in "$@" ; do
-            [ -z "${data}" ] && local data="> ${file}" || local data="${data}\n\n> ${file}"
-            data="${data}\n$(python -m json.tool "${file}")"
-        done
-        echo -e "${data}" | ${PAGER}
-    else
-        cat | python -m json.tool | ${PAGER}
     fi
 }
 
