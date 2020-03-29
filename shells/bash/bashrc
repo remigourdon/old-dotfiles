@@ -17,11 +17,13 @@ if [ -e "${GIT_PROMPT}" ] ; then
     export PS1='\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 1)\]\W\[$(tput setaf 4)\]$(__git_ps1 " (%s)") \[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]'
 fi
 
-# Setup aliases
-[ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
-
-# FZF
-[ -e "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
+# fasd
+fasd_cache="${HOME}/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "${fasd_cache}" -o ! -s "${fasd_cache}" ]; then
+    fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "${fasd_cache}"
+fi
+source "${fasd_cache}"
+unset fasd_cache
 
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1
@@ -32,4 +34,8 @@ export PIPENV_VENV_IN_PROJECT=1
 # Local configuration
 [ -e "${HOME}/.bash_local" ] && source "${HOME}/.bash_local"
 
+# Setup aliases
+[ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
+
+# fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

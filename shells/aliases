@@ -4,9 +4,6 @@ alias sbrc='source ~/.bashrc'
 # sudo (this tick allows to run sudo command with user's PATH and bashrc)
 alias sudo='sudo '
 
-# Editor
-alias e='$EDITOR'
-
 # rm
 alias rm='rm -i'
 
@@ -107,6 +104,22 @@ alias udda='udiskie-umount --all --detach'
 
 # json
 alias json='jq "."'
+
+# open in editor using fasd and fzf
+v() {
+    [ $# -gt 0 ] && fasd -f -e ${EDITOR} "$*" && return
+    local file
+    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
+}
+
+# change directory using fasd and fzf
+unalias z
+unalias zz
+z() {
+    [ $# -gt 0 ] && fasd_cd -d "$*" && return
+    local dir
+    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
 
 # Display CSV
 csv() {
