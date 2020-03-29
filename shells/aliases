@@ -129,11 +129,11 @@ tsv() {
     if [ "$#" -ne 0 ] ; then
         for file in "$@" ; do
             [ -z "${data}" ] && local data="> ${file}" || local data="${data}\n\n> ${file}"
-            data="${data}\n$(column -t -s$'\t' -n "${file}")"
+            data="${data}\n$(column -t -s $'\t' -n "${file}")"
         done
         echo -e "${data}" | less -F -S -X -K
     else
-        column -t -s, -n "$@" | less -F -S -X -K
+        column -t -s $'\t' -n "$@" | less -F -S -X -K
     fi
 }
 
