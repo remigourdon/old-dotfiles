@@ -5,6 +5,9 @@
 # set POSIX complient shell to use
 set shell sh
 
+# Previewer script
+set previewer ~/.config/lf/pv.sh
+
 # set shell options
 set shellopts '-eu'
 
