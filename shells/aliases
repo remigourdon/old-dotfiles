@@ -108,9 +108,6 @@ alias udda='udiskie-umount --all --detach'
 # json
 alias json='jq "."'
 
-# Move up N directories
-up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
-
 # Display CSV
 csv() {
     if [ "$#" -ne 0 ] ; then
