@@ -1,8 +1,7 @@
+# shellcheck shell=sh disable=SC2164,SC2059
+
 # Source bashrc
 alias sbrc='source ~/.bashrc'
-
-# sudo (this tick allows to run sudo command with user's PATH and bashrc)
-alias sudo='sudo '
 
 # rm
 alias rm='rm -i'
@@ -76,10 +75,10 @@ alias gri='git rebase --interactive'
 alias sshr='ssh-keygen -f $HOME/.ssh/known_hosts -R'
 
 # Set date on remote
-sshd() { echo "Setting date to local on ${1}" ; ssh "${1}" sudo date -s @`date +%s` ; }
+sshd() { echo "Setting date to local on ${1}" ; ssh "${1}" sudo date -s @"$(date +%s)" ; }
 
 # neovim
-command -v nvim 2>&1 >/dev/null && alias vim='nvim'
+command -v nvim >/dev/null 2>&1 && alias vim='nvim'
 
 # netstat
 alias ports='netstat -tulanp'
@@ -103,13 +102,12 @@ alias udd='udiskie-umount --force --detach'
 alias udda='udiskie-umount --all --detach'
 
 # json
-alias json='jq "."'
+alias json='jq .'
 
 # open in editor using fasd and fzf
 v() {
-    [ $# -gt 0 ] && fasd -f -e ${EDITOR} "$*" && return
-    local file
-    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
+    [ $# -gt 0 ] && fasd -f -e "${EDITOR}" "$*" && return
+    fasd -Rfl "$1" | fzf -1 -0 --no-sort +m | xargs -r "${EDITOR}"
 }
 
 # change directory using fasd and fzf
@@ -117,18 +115,13 @@ unalias z
 unalias zz
 z() {
     [ $# -gt 0 ] && fasd_cd -d "$*" && return
-    local dir
-    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+    cd "$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)"
 }
 
 # Display CSV
 csv() {
     if [ "$#" -ne 0 ] ; then
-        for file in "$@" ; do
-            [ -z "${data}" ] && local data="> ${file}" || local data="${data}\n\n> ${file}"
-            data="${data}\n$(column -t -s, -n "${file}")"
-        done
-        echo -e "${data}" | less -F -S -X -K
+        printf '%s\n' "${@}" | xargs -I{} sh -c 'echo "> {}" ; column -t -s, -n {}' | less -F -S -X -K
     else
         column -t -s, -n "$@" | less -F -S -X -K
     fi
@@ -137,26 +130,23 @@ csv() {
 # Display TSV
 tsv() {
     if [ "$#" -ne 0 ] ; then
-        for file in "$@" ; do
-            [ -z "${data}" ] && local data="> ${file}" || local data="${data}\n\n> ${file}"
-            data="${data}\n$(column -t -s $'\t' -n "${file}")"
-        done
-        echo -e "${data}" | less -F -S -X -K
+        printf '%s\n' "${@}" | xargs -I{} sh -c 'echo "> {}" ; column -t -s "$(printf "\t")" -n {}' | less -F -S -X -K
     else
-        column -t -s $'\t' -n "$@" | less -F -S -X -K
+        column -t -s "$(printf '\t')" -n "$@" | less -F -S -X -K
     fi
 }
 
 # recursive git commands
 gr() {
     for d in $(find . -mindepth 1 -type d -name '.git') ; do
-        pushd "${d%.git}" >/dev/null
-        if git rev-parse --is-inside-work-tree >/dev/null 2>&1 ; then
-            echo -e "\e[34m> ${PWD}\e[0m"
-            git --git-dir="${PWD}/.git" --work-tree="${PWD}" "${@}"
-            echo
-        fi
-        popd >/dev/null
+        (
+            cd "${d%.git}"
+            if git rev-parse --is-inside-work-tree >/dev/null 2>&1 ; then
+                echo "> ${PWD}"
+                git --git-dir="${PWD}/.git" --work-tree="${PWD}" "${@}"
+                echo
+            fi
+        )
     done
 }
 alias grl='gr log HEAD --oneline --no-walk'
