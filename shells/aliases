@@ -104,6 +104,16 @@ alias udda='udiskie-umount --all --detach'
 # json
 alias json='jq .'
 
+# navi
+np() {
+    if [ $# -ne 0 ] ; then
+        navi --print query "$*"
+    else
+        navi --print
+    fi
+}
+n() { np "$*" > /tmp/__navi__ && $SHELL -i /tmp/__navi__ ; rm -f /tmp/__navi__ ; history -r ; }
+
 # open in editor using fasd and fzf
 v() {
     [ $# -gt 0 ] && fasd -f -e "${EDITOR}" "$*" && return
