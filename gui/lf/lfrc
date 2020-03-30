@@ -50,6 +50,9 @@ cmd open ${{
 # make directories
 cmd mkdir %mkdir -p "$@"
 
+# make files
+cmd mkfile $[ $# -ne 0 ] && $EDITOR "$@"
+
 # rename file (no overwrite)
 cmd rename %[ -e $1 ] && printf "'$1' already exists" || mv $f $1
 
@@ -137,6 +140,9 @@ map O $mimeopen --ask $f
 # make directories
 map a push :mkdir<space>
 
+# make files
+map n push :mkfile<space>
+
 # rename current file
 map rn push :rename<space>
 
@@ -164,6 +170,7 @@ map gt cd ~/Data/
 map gT cd ~/.trash/
 map gc cd ~/.dotfiles/
 map gC cd ~/.config/
+map gn cd ~/.dotfiles/tools/navi/cheats/
 
 # configs
 map ce $$EDITOR ~/.profile
