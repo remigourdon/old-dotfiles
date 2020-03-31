@@ -53,6 +53,9 @@ cmd mkdir %mkdir -p "$@"
 # make files
 cmd mkfile $[ $# -ne 0 ] && $EDITOR "$@"
 
+# change permissions
+cmd chmod %[ $# -ne 0 ] && chmod -R "$1" $fx && lf -remote "send $id reload"
+
 # rename file (no overwrite)
 cmd rename %[ -e $1 ] && printf "'$1' already exists" || mv $f $1
 
@@ -98,6 +101,14 @@ cmd uarchivemount ${{
     if [ ${f%-archivemount} != $f ] ; then
         fusermount -u $(readlink -f $f) && rm -r $f
     fi
+}}
+
+# fasd
+cmd fasdz ${{
+    fasd -Rdl | ~/.fzf/bin/fzf -1 -0 --no-sort +m | xargs -I{} lf -remote "send $id cd \"{}\""
+}}
+cmd fasdv ${{
+    fasd -Rfl | ~/.fzf/bin/fzf -1 -0 --no-sort +m | xargs -r "${EDITOR}"
 }}
 
 ##############
@@ -156,6 +167,10 @@ map rM delete
 # umounts
 map Ua :uarchivemount
 
+# fasd
+map fz :fasdz
+map fv :fasdv
+
 # gotos
 map gh cd ~/
 map gd cd ~/Documents/
@@ -171,6 +186,7 @@ map gT cd ~/.trash/
 map gc cd ~/.dotfiles/
 map gC cd ~/.config/
 map gn cd ~/.dotfiles/tools/navi/cheats/
+map gr cd ~/TresoritDrive/
 
 # configs
 map ce $$EDITOR ~/.profile
