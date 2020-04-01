@@ -1,15 +1,16 @@
 $include /etc/inputrc
 
-# Ignore case during auto-completion
-set completion-ignore-case on
-
 # Set the default readline mode as vi
 set editing-mode vi
 
 # Completion menu with tab
-set show-all-if-ambiguous on
 TAB:menu-complete
 "\e[Z": menu-complete-backward
+
+# Ignore case during auto-completion
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
 
 $if mode=vi
 
