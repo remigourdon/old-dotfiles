@@ -1,0 +1,2 @@
+- shell:
+  - tic -x gui/terminfo/tmux-256color.ti
