@@ -56,9 +56,6 @@ au BufRead,BufNewFile *.source setfiletype sh
 " DISLAY "
 """"""""""
 
-" Syntax highlighting
-syntax enable
-
 " Hybrid numbering
 set relativenumber number
 
@@ -170,3 +167,13 @@ set wildmode=list:longest,full
 
 " Check file in shellcheck:
 map <leader>s :!clear && shellcheck -x %<CR>
+
+""""""""""""""""
+" HIGHLIGHTING "
+""""""""""""""""
+
+" Syntax highlighting
+syntax enable
+
+" Comments in italics
+highlight Comment cterm=italic
