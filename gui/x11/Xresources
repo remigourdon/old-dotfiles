@@ -2,7 +2,7 @@
 ! FONTS !
 !!!!!!!!!
 
-*.font: Source Code Pro for Powerline:pixelsize=16:antialias=true:autohint=true;
+*.font: Hack:pixelsize=16:antialias=true:autohint=true;
 *.alpha: 250
 
 Xft.lcdfilter: lcddefault
@@ -17,4 +17,4 @@ Xft.dpi: 96
 ! ROFI !
 !!!!!!!!
 
-rofi.font: Source Code Pro for Powerline 11
+rofi.font: Hack 11
