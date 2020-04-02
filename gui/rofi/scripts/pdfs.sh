@@ -6,9 +6,7 @@ LAUNCHER="rofi -dmenu -i -p pdfs -format d"
 
 LIST="$(fd -e pdf --exclude "TresoritDrive/" . ~)"
 
-FILTERED=$(echo "${LIST}" \
-    | sed -e "s#${HOME}/\(.*\)\.pdf#\1#gi" \
-    | ${LAUNCHER})
+FILTERED=$(echo "${LIST}" | ${LAUNCHER})
 
 case ${FILTERED} in
     "") exit 1 ;;

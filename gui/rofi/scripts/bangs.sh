@@ -15,6 +15,9 @@ COMMANDS["power"]="${HOME}/.config/rofi/scripts/power.sh"
 # PDF opener
 COMMANDS["pdfs"]="${HOME}/.config/rofi/scripts/pdfs.sh"
 
+# Document opener
+COMMANDS["docs"]="${HOME}/.config/rofi/scripts/docs.sh"
+
 # VirtualBox
 COMMANDS["vbox"]="${HOME}/.config/rofi/scripts/vbox.sh"
 
