@@ -3,7 +3,7 @@
 set -u # Treat unset variables and parameters as errors
 
 # Script selection
-LIST="$(fd -e sh . ~/.config/tmux/)"
+LIST="$(find ~/.config/tmux/ -type f -name '*.sh')"
 LAUNCHER="rofi -dmenu -i -p script -format d"
 FILTERED=$(echo "${LIST}" \
     | sed -e "s!.*/tmux/\(.*\)\.sh!\1!gi" \

@@ -21,6 +21,12 @@ COMMANDS["vbox"]="${HOME}/.config/rofi/scripts/vbox.sh"
 # tmux
 COMMANDS["tmux"]="${HOME}/.config/rofi/scripts/tmux.sh"
 
+# wal
+COMMANDS["wal"]="${HOME}/.config/rofi/scripts/wal.sh"
+
+# ssh
+COMMANDS["ssh"]="${HOME}/.config/rofi/scripts/ssh.sh"
+
 ############
 # GENERATE #
 ############
