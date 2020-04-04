@@ -1,7 +1,7 @@
 $include /etc/inputrc
 
-# Set the default readline mode as vi
-set editing-mode vi
+# Set the default readline mode
+set editing-mode emacs
 
 # Completion menu with tab
 TAB:menu-complete
@@ -24,5 +24,13 @@ set keymap vi-insert
 Control-l: clear-screen
 Control-p: history-search-backward
 Control-n: history-search-forward
+
+# Macro to make current line a subshell
+Control-j: "\eI$(\eA)"
+
+$else
+
+# Macro to make current line a subshell
+Control-j: "\C-a$(\C-e)"
 
 $endif
