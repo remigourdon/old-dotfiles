@@ -1,13 +1,19 @@
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/)
+#   `set -E`: force ERR to be inherited by shell functions, substitutions and commands
+#   `set -e`: exit when a command fails
+#   `set -u`: treat unset variables and parameters as errors
+#   `set -o pipefail`: set exit code of pipeline to righmost non-zero
+
 snippet bang "Add bash shebang"
 #!/bin/bash
 # ${0:Description}
-set -u # Treat unset variables and parameters as errors
+set -Eeuxo pipefail
 endsnippet
 
 snippet basis "Add a bash shebang usage and getopts functions"
 #!/bin/bash
 # ${1:Description}
-set -u # Treat unset variables and parameters as errors
+set -Eeuxo pipefail
 
 #########
 # USAGE #
@@ -70,6 +76,12 @@ endsnippet
 
 snippet if "An if"
 if ${1:[[ ${2:CONDITION} ]]} ; then
+    ${0}
+fi
+endsnippet
+
+snippet ifn "An if not"
+if ! ${1:[[ ${2:CONDITION} ]]} ; then
     ${0}
 fi
 endsnippet
