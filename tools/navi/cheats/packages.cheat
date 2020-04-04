@@ -53,3 +53,8 @@ apt rdepends <package-name>
 
 # Remove un-needed packages and dependencies
 apt autoremove
+
+# List recent package modifications
+awk '$3~/^<operation>$/ {print $1 " " $2 " " $4;}' /var/log/dpkg.log /var/log/dpkg.log.1 2>/dev/null
+
+$ operation: echo -e "install\nupgrade\nremove"

@@ -187,6 +187,7 @@ map gc cd ~/.dotfiles/
 map gC cd ~/.config/
 map gn cd ~/.dotfiles/tools/navi/cheats/
 map gr cd ~/TresoritDrive/
+map gm cd /media/remi/
 
 # configs
 map ce $$EDITOR ~/.profile
